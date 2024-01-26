@@ -31,7 +31,7 @@ export const SignupPage = () => {
 		});
 
 		if (isValid) {
-			localStorage.setItem('userCredentials', formData);
+			localStorage.setItem('userCredentials',  JSON.stringify(formData));
 		}
 		console.log('errorData', errorData);
 		setFormError((prev) => ({ ...prev, ...errorData }));
