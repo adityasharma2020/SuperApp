@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&family=Inter&family=Roboto:wght@100;700&family=Single+Day&display=swap');
+
+@import url('../css/variables.css');
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+	background-color: var(--bg-color);
+	@media only screen and (max-width: var(--bp-large)) {
+		font-size: 50%;
+	}
+	@media only screen and (max-width: var(--bp-small)) {
+		font-size: 47%;
+	}
+}
+
+body {
+	box-sizing: border-box;
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	line-height: 1.6;
+	color: var(--black-color);
+}
+
+button {
+	cursor: pointer;
+	outline: none;
+}
+
+a {
+	text-decoration: none;
+	color: initial;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.disabled-link {
+	pointer-events: none;
+}
+
+*::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+	background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	border-radius: 1px;
+	background: var(--black-color);
+}
