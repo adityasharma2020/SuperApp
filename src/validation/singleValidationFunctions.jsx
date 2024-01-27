@@ -22,5 +22,5 @@ export function validateMobile(value) {
 }
 
 export function isChecked(value) {
-	return value === 'true';
+	return value === 'true' || value === true;
 }

@@ -2,7 +2,10 @@
 
 .container {
 	display: flex;
+	justify-content: center;
+	align-items: center;
 	height: 100vh;
+	background-color: red;
 }
 
 .left {
@@ -26,6 +29,7 @@
 
 .right {
 	width: 50%;
+	height: 100%;
 	background-color: black;
 	color: white;
 	display: flex;
@@ -34,9 +38,11 @@
 }
 .rightContainer {
 	display: flex;
+	width: 100%;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding: 2rem 0;
 }
 
 .primaryHeading {
@@ -76,7 +82,7 @@
 	border: 2px solid red;
 }
 
-.errorHeadline{
+.errorHeadline {
 	color: red;
 	font-size: 1.5rem;
 }
@@ -118,4 +124,26 @@
 }
 .paragraph span {
 	color: var(--green-color);
+	cursor: pointer;
+}
+
+/* Media queries */
+
+@media screen and (max-width: 600px) {
+	.container {
+		flex-direction: column;
+		height: auto;
+	}
+
+	.left {
+		height: 50vh;
+		width: 100%;
+	}
+
+	.left .headline {
+		font-size: 3rem;
+	}
+	.right {
+		width: 100%;
+	}
 }

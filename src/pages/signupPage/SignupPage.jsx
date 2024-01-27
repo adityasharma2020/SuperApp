@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from './signupPage.module.css';
 import loginAllValidation from '../../validation/AllValidation';
+import { debouncedValidation } from '../../validation/singleFieldValidation';
 const initialFormErrors = {
 	name: null,
 	userName: null,
@@ -8,6 +9,8 @@ const initialFormErrors = {
 	mobile: null,
 	checkBox: null,
 };
+
+const DELAY = 1000;
 export const SignupPage = () => {
 	const [formData, setFormData] = useState({
 		name: '',
@@ -31,7 +34,7 @@ export const SignupPage = () => {
 		});
 
 		if (isValid) {
-			localStorage.setItem('userCredentials',  JSON.stringify(formData));
+			localStorage.setItem('userCredentials', JSON.stringify(formData));
 		}
 		console.log('errorData', errorData);
 		setFormError((prev) => ({ ...prev, ...errorData }));
@@ -39,6 +42,8 @@ export const SignupPage = () => {
 
 	function handleInputChange(name, value) {
 		setFormData((prev) => ({ ...prev, [name]: value }));
+		console.log('asdfasdf', name);
+		debouncedValidation(name, value, setFormError, DELAY);
 	}
 
 	useEffect(() => {
@@ -73,7 +78,7 @@ export const SignupPage = () => {
 							type='text'
 							name='userName'
 							placeholder='UserName'
-							className={formError?.name != null ? `${styles.error}` : ''}
+							className={formError?.userName != null ? `${styles.error}` : ''}
 							onChange={(e) => handleInputChange('userName', e.target.value)}
 						/>
 						{formError && formError.userName && (
@@ -85,7 +90,7 @@ export const SignupPage = () => {
 							type='text'
 							name='email'
 							placeholder='Email'
-							className={formError?.name != null ? `${styles.error}` : ''}
+							className={formError?.email != null ? `${styles.error}` : ''}
 							onChange={(e) => handleInputChange('email', e.target.value)}
 						/>
 						{formError && formError.email && (
@@ -97,7 +102,7 @@ export const SignupPage = () => {
 							type='number'
 							name='mobile'
 							placeholder='Mobile'
-							className={formError?.name != null ? `${styles.error}` : ''}
+							className={formError?.mobile != null ? `${styles.error}` : ''}
 							onChange={(e) => handleInputChange('mobile', e.target.value)}
 						/>
 						{formError && formError.mobile && (
@@ -110,7 +115,7 @@ export const SignupPage = () => {
 								type='checkbox'
 								name='checkBox'
 								id='checkbox'
-								className={formError?.name != null ? `${styles.error}` : ''}
+								className={formError?.checkBox != null ? `${styles.error}` : ''}
 								onChange={(e) => handleInputChange('checkBox', e.target.checked)}
 							/>
 							<label htmlFor='checkbox'>

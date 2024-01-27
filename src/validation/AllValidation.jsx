@@ -11,7 +11,6 @@ function loginAllValidation(formData) {
 
 	for (const fieldName of Object.keys(formData)) {
 		const value = formData[fieldName];
-		console.log('signUpRules[fieldName]', signUpRules[fieldName]);
 		const validationFunctions = signUpRules[fieldName];
 		for (const functionName of validationFunctions) {
 			switch (functionName) {
@@ -40,8 +39,9 @@ function loginAllValidation(formData) {
 
 				case 'isChecked':
 					if (!isChecked(value)) {
-						console.log('inside check',value);
-						errors[fieldName] = `Checkbox must be checked`;
+						
+				
+						errors[fieldName] = `Check this box if you want to proceed`;
 					}
 					break;
 			}
