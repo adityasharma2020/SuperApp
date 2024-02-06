@@ -1,0 +1,31 @@
+@import '../assets/css/main.css';
+
+.categoryButton {
+	padding: 1rem;
+	border: none;
+	outline: none;
+    color: white;
+    font-size: 1.5rem;
+	background-color: transparent;
+    cursor:auto;
+}
+
+.actionContainer {
+    position: relative;
+	display: flex;
+    width: 14rem;
+	justify-content: center;
+	align-items: center;
+    border-radius: 15px;
+    background-color: var(--dark-green-color);
+}
+
+.closeButton {
+    position: absolute;
+	bottom:20%;
+    padding: 0 2rem;
+    color: white;
+	right: 0;
+    cursor: pointer;
+    font-size: 1.5rem;
+}

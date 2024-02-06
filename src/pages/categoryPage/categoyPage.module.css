@@ -1,0 +1,115 @@
+@import '../../assets/css/main.css';
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-color: black;
+}
+
+.left {
+	position: relative;
+	width: 40%;
+
+	padding: 8rem;
+}
+
+.primaryHeading {
+	font-size: 5rem;
+	font-family: 'single day';
+	color: var(--green-color);
+}
+
+.left .headline {
+	font-size: 6rem;
+	font-family: 'Roboto';
+	color: white;
+
+	padding: 2rem;
+}
+
+.right {
+	width: 60%;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 5rem;
+}
+.rightContainer {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	gap: 3rem;
+	width: 100%;
+}
+
+.button {
+	width: 100%;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	padding-top:6rem ;
+	
+}
+
+p{
+	color: red;
+	font-size: 1.5rem;
+}
+
+.alertBox{
+	display: flex;
+	justify-content: start;
+	gap: 1rem;
+	align-items: center;
+}
+
+.imageBox{
+	width: 2rem;
+}
+
+img{
+	width: 100%;
+}
+
+.nextPageButton {
+	border-radius: 15px;
+	border: none;
+	outline: none;
+	padding: 1rem 2rem;
+	background-color: var(--dark-green-color);
+	color: white;
+}
+
+/* Media queries */
+
+@media screen and (max-width: 600px) {
+	.container {
+		padding: 2rem 0;
+		flex-direction: column;
+	}
+
+	.primaryHeading {
+		font-size: 4rem;
+		font-family: 'single day';
+		color: var(--green-color);
+	}
+
+	.left {
+		padding: 1rem;
+		height: 50vh;
+	}
+
+	.left .headline {
+		font-size: 4rem;
+		padding: 0rem;
+	}
+
+	.rightContainer {
+		grid-template-columns: repeat(1, 1fr);
+		padding: 1rem;
+	}
+}

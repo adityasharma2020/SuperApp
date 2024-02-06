@@ -1,8 +1,8 @@
 :root {
-	--bg-color: #f5f5f5;
+	--bg-color: black;
 	--green-color: #72db73;
 	--dark-green-color: #148a08;
 	--gray-color: #292929;
 	--link-color: #346bd4;
-	--black-color: #000;
+	--white-color: #fff;
 }

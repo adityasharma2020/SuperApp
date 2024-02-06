@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './signupPage.module.css';
 import loginAllValidation from '../../validation/AllValidation';
 import { debouncedValidation } from '../../validation/singleFieldValidation';
+import { useNavigate } from 'react-router-dom';
 const initialFormErrors = {
 	name: null,
 	userName: null,
@@ -12,6 +13,8 @@ const initialFormErrors = {
 
 const DELAY = 1000;
 export const SignupPage = () => {
+	const navigate = useNavigate();
+	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [formData, setFormData] = useState({
 		name: '',
 		userName: '',
@@ -35,9 +38,11 @@ export const SignupPage = () => {
 
 		if (isValid) {
 			localStorage.setItem('userCredentials', JSON.stringify(formData));
+			console.log('inside if part========');
+			setIsSubmitted(true);
+		} else {
+			setFormError((prev) => ({ ...prev, ...errorData }));
 		}
-		console.log('errorData', errorData);
-		setFormError((prev) => ({ ...prev, ...errorData }));
 	}
 
 	function handleInputChange(name, value) {
@@ -47,8 +52,12 @@ export const SignupPage = () => {
 	}
 
 	useEffect(() => {
-		console.log('formError', formError);
-	}, [formError]);
+		console.log("inside user effect");
+		if (localStorage.getItem('userCredentials') !== null || isSubmitted) {
+			console.log("inside use efects IF statement");
+			navigate('/category');
+		}
+	}, [navigate, isSubmitted]);
 
 	return (
 		<div className={styles.container}>

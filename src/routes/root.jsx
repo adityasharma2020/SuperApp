@@ -2,11 +2,13 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { Suspense, useContext } from 'react';
 import DashboardPage from '../pages/dashboardPage/DashboardPage';
-import CategoryPage from '../pages/categoryPage/CategoryPage';
 import EntertainmentPage from '../pages/entertainmentPage/EntertainmentPage';
 import PageNotFound from './page-not-found';
+import { CategoryPage } from '../pages/categoryPage/CategoryPage';
+
 export default function Root() {
 	const { isAuthenticated } = useContext(AuthContext);
+	console.log('isAuthenticated', isAuthenticated);
 	return isAuthenticated ? (
 		<Routes>
 			<Route
