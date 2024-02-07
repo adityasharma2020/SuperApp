@@ -1,10 +1,10 @@
 import styles from './actionButton.module.css';
 
-const ActionButton = ({ children, handleOnClick }) => {
+const ActionButton = ({ name, handleOnClick }) => {
 	return (
 		<>
 			<div className={styles.actionContainer}>
-				<button className={styles.categoryButton}>{children}</button>
+				<button className={styles.categoryButton}>{name}</button>
 				<i className={styles.closeButton} onClick={handleOnClick}>
 					X
 				</i>

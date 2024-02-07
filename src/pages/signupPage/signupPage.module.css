@@ -101,6 +101,9 @@
 }
 .checkbox label {
 	font-size: 1.3rem;
+}
+
+p {
 	color: #7c7c7c;
 }
 
@@ -129,7 +132,7 @@
 
 /* Media queries */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
 	.container {
 		flex-direction: column;
 		height: auto;

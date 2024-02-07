@@ -10,18 +10,27 @@ const CategoryBox = ({ category, categoriesList, selectedCategories, setSelected
 		border: `${isSelected ? '4px solid green' : ''}`,
 	};
 
-    const addIdToCategoryList = (id)=>{
-         
-    }
-
-	const handleClick = () => {
-		addIdToCategoryList(category.id);
-		setIsSelected(!isSelected);
+	const addIdToCategoryList = (value) => {
+		console.log('value', value);
+		if (selectedCategories.includes(value)) {
+			// If value already exists, remove it
+			setSelectedCategories(selectedCategories.filter((category) => category !== value));
+			console.log('inside if');
+		} else {
+			// If value doesn't exist, add it
+			setSelectedCategories([...selectedCategories, value]);
+			console.log('inside else',selectedCategories);
+		}
 		console.log(selectedCategories);
 	};
 
+	const handleClick = () => {
+		addIdToCategoryList(category);
+		setIsSelected(!isSelected);
+	};
+
 	useEffect(() => {
-		const isPresent = selectedCategories.includes(category.id) === true;
+		const isPresent = selectedCategories.includes(category) === true;
 		if (isPresent) {
 			setIsSelected(true);
 		}

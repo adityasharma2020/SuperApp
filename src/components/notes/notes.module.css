@@ -1,0 +1,7 @@
+@import url('../../assets/css/main.css');
+
+.container {
+	background-color: var(--notes-yellow);
+	width: 50vw;
+	height: 100vh;
+}

@@ -7,9 +7,7 @@ import PageNotFound from './page-not-found';
 import { CategoryPage } from '../pages/categoryPage/CategoryPage';
 
 export default function Root() {
-	const { isAuthenticated } = useContext(AuthContext);
-	console.log('isAuthenticated', isAuthenticated);
-	return isAuthenticated ? (
+	return (
 		<Routes>
 			<Route
 				path='/'
@@ -37,7 +35,5 @@ export default function Root() {
 			/>
 			<Route path='*' element={<PageNotFound />} />
 		</Routes>
-	) : (
-		<Navigate to='/login' />
 	);
 }

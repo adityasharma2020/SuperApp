@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { json, useNavigate } from 'react-router-dom';
 import styles from './categoyPage.module.css';
 import CategoryBox from '../../components/CategoryBox';
+import ActionButton from '../../components/ActionButton';
 
 const categoriesList = [
 	{ id: 1, name: 'Action', color: '#FF5209', image: <img src='images/image 2.png' alt='' /> },
@@ -15,10 +17,13 @@ const categoriesList = [
 ];
 
 export const CategoryPage = () => {
+	const navigate = useNavigate();
 	const [selectedCategories, setSelectedCategories] = useState([]);
-	const [lengthError, setLengthError] = useState(false);
 
-	
+	const removeCategory = (value) => {
+		const newCategories = selectedCategories.filter((category) => category != value);
+		setSelectedCategories(newCategories);
+	};
 
 	return (
 		<div className={styles.container}>
@@ -26,7 +31,19 @@ export const CategoryPage = () => {
 				<h1 className={styles.primaryHeading}>Super App</h1>
 				<h1 className={styles.headline}>Choose your entertainment category</h1>
 
-				{lengthError ? (
+				<div className={styles.AllCategories}>
+					{selectedCategories.map((category) => {
+						return (
+							<ActionButton
+								key={category.id}
+								handleOnClick={() => removeCategory(category)}
+								name={category.name}
+							/>
+						);
+					})}
+				</div>
+
+				{selectedCategories.length < 3 ? (
 					<div className={styles.alertBox}>
 						<div className={styles.imageBox}>
 							<img src='images/Exclaimation.png' alt='' />
@@ -50,7 +67,21 @@ export const CategoryPage = () => {
 					))}
 				</div>
 				<div className={styles.button}>
-					<button className={styles.nextPageButton}>Next Page</button>
+					<button
+						disabled={selectedCategories.length < 3}
+						onClick={() => {
+							localStorage.setItem(
+								'selectedCategories',
+								JSON.stringify(selectedCategories)
+							);
+							navigate('/');
+						}}
+						className={` ${styles.nextPageButton} ${
+							selectedCategories.length < 3 && styles.disabled
+						}`}
+					>
+						Next Page
+					</button>
 				</div>
 			</div>
 		</div>

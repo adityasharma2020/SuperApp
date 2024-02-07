@@ -38,7 +38,7 @@ export const SignupPage = () => {
 
 		if (isValid) {
 			localStorage.setItem('userCredentials', JSON.stringify(formData));
-			console.log('inside if part========');
+			navigate('/category');
 			setIsSubmitted(true);
 		} else {
 			setFormError((prev) => ({ ...prev, ...errorData }));
@@ -51,13 +51,7 @@ export const SignupPage = () => {
 		debouncedValidation(name, value, setFormError, DELAY);
 	}
 
-	useEffect(() => {
-		console.log("inside user effect");
-		if (localStorage.getItem('userCredentials') !== null || isSubmitted) {
-			console.log("inside use efects IF statement");
-			navigate('/category');
-		}
-	}, [navigate, isSubmitted]);
+
 
 	return (
 		<div className={styles.container}>
